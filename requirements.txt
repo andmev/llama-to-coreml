@@ -1,0 +1,7 @@
+--extra-index-url https://download.pytorch.org/whl/nightly/cpu
+torch >= 2.0.0
+transformers==4.44.2
+coremltools>=7.1
+numpy>=1.24.0
+sentencepiece
+protobuf
