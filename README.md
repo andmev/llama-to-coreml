@@ -31,6 +31,7 @@ python scripts/convert_model.py \
 
 - The model should be downloaded from HuggingFace.
 - The token is optional, but it's required for gated models.
+- This project based on this [article](https://machinelearning.apple.com/research/core-ml-on-device-llama)
 
 ## License
 
