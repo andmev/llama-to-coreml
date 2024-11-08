@@ -20,11 +20,21 @@ mise install
 
 ## Usage
 
+### Convert
+
 ```bash
 python scripts/convert_model.py \
     --model-path meta-llama/Llama-3.1-8B-Instruct \
     --output-path output/llama_3.1_coreml.mlpackage \
     --token your_token_here
+```
+
+### Compile
+
+```bash
+python scripts/compile_coreml.py \
+    output/llama_3.1_coreml.mlpackage \
+    output/compiled
 ```
 
 ## Notes
