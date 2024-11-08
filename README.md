@@ -2,7 +2,6 @@
 
 This project converts the Llama 3.x model to CoreML format for deployment on Apple Silicon devices.
 
-
 ## Requirements
 
 - Python 3.8+
@@ -20,22 +19,17 @@ mise install
 
 ## Usage
 
-### Convert
+### Convert and Optionally Compile
 
 ```bash
 python scripts/convert_model.py \
-    --model-path meta-llama/Llama-3.1-8B-Instruct \
-    --output-path output/llama_3.1_coreml.mlpackage \
-    --token your_token_here
+    --model-path meta-llama/Llama-3.2-3B-Instruct \
+    --output-path output/Llama-3.2-3B-Instruct.mlpackage \
+    --token your_token_here \
+    --compile  # Optional: add this flag to compile after conversion
 ```
 
-### Compile
-
-```bash
-python scripts/compile_coreml.py \
-    output/llama_3.1_coreml.mlpackage \
-    output/compiled
-```
+The `--compile` flag will automatically compile the model to `.mlmodelc` format after conversion, creating it in the same directory as the `.mlpackage` file.
 
 ## Notes
 
