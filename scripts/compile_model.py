@@ -13,7 +13,8 @@ def compile_model(input_path: str, output_path: str = None):
     """
     try:
         if output_path is None:
-            output_path = str(Path(input_path).with_suffix('.mlmodelc'))
+            input_file = Path(input_path).name
+            output_path = str(Path(input_file).with_suffix('.mlmodelc'))
         
         # Create output directory if it doesn't exist
         Path(output_path).parent.mkdir(parents=True, exist_ok=True)
