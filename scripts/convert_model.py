@@ -5,32 +5,7 @@ from pathlib import Path
 from src.model import KvCacheStateLlamaForCausalLM
 from src.converter import LlamaCoreMLConverter
 from huggingface_hub import login
-
-def compile_model(input_path: str):
-    """
-    Compile .mlpackage model to .mlmodelc format using coremlcompiler
-    
-    Args:
-        input_path: Path to the .mlpackage model
-    """
-    try:
-        output_path = str(Path(input_path).with_suffix('.mlmodelc'))
-        
-        # Use coremlcompiler to compile the model
-        cmd = ['xcrun', 'coremlcompiler', 'compile', input_path, output_path]
-        
-        print(f"Running compilation command: {' '.join(cmd)}")
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        
-        if result.returncode == 0:
-            print(f"Model successfully compiled to: {output_path}")
-        else:
-            print(f"Compilation failed with error:\n{result.stderr}")
-            raise Exception(result.stderr)
-            
-    except Exception as e:
-        print(f"Error during compilation: {str(e)}")
-        raise
+from scripts.compile_model import compile_model
 
 def main():
     parser = argparse.ArgumentParser(description='Convert Llama 3.x to CoreML')
@@ -78,7 +53,8 @@ def main():
     
     # Compile if requested
     if args.compile:
-        compile_model(str(output_path))
+        compile_path = str(output_path.with_suffix('.mlmodelc'))
+        compile_model(str(output_path), compile_path)
 
 if __name__ == '__main__':
     main() 

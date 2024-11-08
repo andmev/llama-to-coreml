@@ -11,17 +11,21 @@ This project converts the Llama 3.x model to CoreML format for deployment on App
 
 ## Installation
 
-```bash
+```shell
 mise install
 ```
 
 [mise](https://github.com/jdx/mise) is a tool for managing Python versions and virtual environments.
 
-## Usage
+## Model Conversion and Compilation
 
-### Convert and Optionally Compile
+This tool provides two main scripts for working with CoreML models:
 
-```bash
+### Converting Models
+
+To convert a Llama model to CoreML format:
+
+```shell
 python scripts/convert_model.py \
     --model-path meta-llama/Llama-3.2-3B-Instruct \
     --output-path output/Llama-3.2-3B-Instruct.mlpackage \
@@ -30,6 +34,16 @@ python scripts/convert_model.py \
 ```
 
 The `--compile` flag will automatically compile the model to `.mlmodelc` format after conversion, creating it in the same directory as the `.mlpackage` file.
+
+### Compiling Models
+
+To compile a CoreML model to `.mlmodelc` format:
+
+```shell
+python scripts/compile_model.py \
+    --model-path output/Llama-3.2-3B-Instruct.mlpackage \
+    --output-path output/Llama-3.2-3B-Instruct.mlmodelc
+```
 
 ## Notes
 
@@ -40,3 +54,4 @@ The `--compile` flag will automatically compile the model to `.mlmodelc` format 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
