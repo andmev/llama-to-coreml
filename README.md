@@ -15,6 +15,11 @@ This project converts the Llama 3.x model to CoreML format for deployment on App
 mise install
 ```
 
+```shell
+pip install -e .
+pip install -r requirements.txt
+```
+
 [mise](https://github.com/jdx/mise) is a tool for managing Python versions and virtual environments.
 
 ## Model Conversion and Compilation
