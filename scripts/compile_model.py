@@ -9,14 +9,12 @@ def compile_model(input_path: str, output_path: str = None):
     Args:
         input_path: Path to the .mlpackage model
         output_path: Optional custom path to save the compiled model. 
-                    If not provided, will use input_path with .mlmodelc extension
+                    If not provided, will use same directory as input_path
     """
     try:
         if output_path is None:
-            output_path = str(Path(input_path).with_suffix('.mlmodelc'))
-        
-        # Create output directory if it doesn't exist
-        Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+            # Use the same directory as input_path
+            output_path = str(Path(input_path).parent)
         
         # Use coremlcompiler to compile the model
         cmd = ['xcrun', 'coremlcompiler', 'compile', input_path, output_path]
